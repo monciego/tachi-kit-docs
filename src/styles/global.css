@@ -1,0 +1,47 @@
+/* Tailwind CSS + Starlight. The layer order lets Tailwind utilities win over
+   Starlight's own styles: https://starlight.astro.build/guides/css-and-tailwind/ */
+
+@import '@fontsource-variable/inter';
+@import '@astrojs/starlight-tailwind';
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+@layer base, starlight, theme, components, utilities;
+
+@theme {
+    --font-sans:
+        'Inter Variable', ui-sans-serif, system-ui, sans-serif,
+        'Apple Color Emoji', 'Segoe UI Emoji';
+}
+
+/* Dark theme (Starlight default). Accent: tachi red lacquer on steel grays. */
+:root {
+    --sl-font: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+    --sl-color-accent-low: #3b0d0d;
+    --sl-color-accent: #ef4444;
+    --sl-color-accent-high: #fecaca;
+    --sl-color-white: #ffffff;
+    --sl-color-gray-1: #eceef0;
+    --sl-color-gray-2: #c6cacf;
+    --sl-color-gray-3: #9aa0a8;
+    --sl-color-gray-4: #545a62;
+    --sl-color-gray-5: #34383e;
+    --sl-color-gray-6: #22252a;
+    --sl-color-black: #16181c;
+}
+
+/* Light theme. */
+:root[data-theme='light'] {
+    --sl-color-accent-low: #fde2e2;
+    --sl-color-accent: #b91c1c;
+    --sl-color-accent-high: #5f0f0f;
+    --sl-color-white: #16181c;
+    --sl-color-gray-1: #22252a;
+    --sl-color-gray-2: #34383e;
+    --sl-color-gray-3: #545a62;
+    --sl-color-gray-4: #8a9098;
+    --sl-color-gray-5: #c6cacf;
+    --sl-color-gray-6: #eceef0;
+    --sl-color-gray-7: #f6f7f8;
+    --sl-color-black: #ffffff;
+}
