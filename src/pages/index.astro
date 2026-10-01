@@ -8,7 +8,6 @@ import ShieldCheck from '@lucide/astro/icons/shield-check';
 import Users from '@lucide/astro/icons/users';
 import Workflow from '@lucide/astro/icons/workflow';
 
-import logo from '../assets/logo.svg?raw';
 import CopyButton from '../components/CopyButton.astro';
 import '../styles/landing.css';
 
@@ -78,6 +77,7 @@ const steps = [
         <title>{title}</title>
         <meta name="description" content={description} />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <script is:inline>
             // Match Starlight's theme preference (stored under "starlight-theme").
             const stored = localStorage.getItem('starlight-theme');
@@ -97,7 +97,12 @@ const steps = [
             class="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-4 py-5 sm:px-6"
         >
             <a href="/" class="flex items-center gap-2.5 font-semibold tracking-tight">
-                <span class="size-8 [&>svg]:size-full" set:html={logo} />
+                <span
+                    lang="ja"
+                    aria-hidden="true"
+                    class="inline-flex h-8 items-center rounded-[0.45rem] bg-brand px-1.5 font-logo text-[0.95rem] leading-none font-bold tracking-tight text-white"
+                    >太刀</span
+                >
                 Tachi Kit
             </a>
             <nav class="flex items-center gap-1 text-sm font-medium">

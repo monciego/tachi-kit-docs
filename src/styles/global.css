@@ -17,6 +17,10 @@
 /* Dark theme (Starlight default). Accent: tachi red lacquer on steel grays. */
 :root {
     --sl-font: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+    /* The 太刀 wordmark: a serif Japanese face from the visitor's system. */
+    --tachi-font-logo:
+        'Noto Serif JP', 'Noto Serif CJK JP', 'Hiragino Mincho ProN',
+        'Yu Mincho', 'YuMincho', 'MS Mincho', serif;
     --sl-color-accent-low: #3b0d0d;
     --sl-color-accent: #ef4444;
     --sl-color-accent-high: #fecaca;

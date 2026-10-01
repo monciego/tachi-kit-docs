@@ -11,6 +11,9 @@
     --font-sans:
         'Inter Variable', ui-sans-serif, system-ui, sans-serif,
         'Apple Color Emoji', 'Segoe UI Emoji';
+    --font-logo:
+        'Noto Serif JP', 'Noto Serif CJK JP', 'Hiragino Mincho ProN',
+        'Yu Mincho', 'YuMincho', 'MS Mincho', serif;
     --color-brand: #b91c1c;
     --color-brand-bright: #ef4444;
 }

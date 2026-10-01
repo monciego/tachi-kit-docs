@@ -10,10 +10,16 @@ export default defineConfig({
             title: 'Tachi Kit',
             description:
                 'Documentation for Tachi Kit, an opinionated Laravel + React + Inertia starter kit.',
-            logo: {
-                src: './src/assets/logo.svg',
-            },
             favicon: '/favicon.svg',
+            head: [
+                {
+                    tag: 'link',
+                    attrs: { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
+                },
+            ],
+            components: {
+                SiteTitle: './src/components/SiteTitle.astro',
+            },
             customCss: ['./src/styles/global.css'],
             social: [
                 {

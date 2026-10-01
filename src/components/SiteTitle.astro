@@ -1,0 +1,44 @@
+---
+// Replaces Starlight's SiteTitle: the 太刀 ("tachi") wordmark is text, not an image.
+const { siteTitle, siteTitleHref } = Astro.locals.starlightRoute;
+---
+
+<a href={siteTitleHref} class="site-title sl-flex">
+    <span class="logo-mark" lang="ja" aria-hidden="true">太刀</span>
+    <span class="title" translate="no">{siteTitle}</span>
+</a>
+
+<style>
+    @layer starlight.core {
+        .site-title {
+            align-items: center;
+            gap: 0.625rem;
+            font-size: var(--sl-text-h4);
+            font-weight: 600;
+            color: var(--sl-color-white);
+            text-decoration: none;
+            white-space: nowrap;
+            min-width: 0;
+        }
+
+        .logo-mark {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 2rem;
+            padding: 0 0.4rem;
+            border-radius: 0.45rem;
+            background: #b91c1c;
+            color: #ffffff;
+            font-family: var(--tachi-font-logo);
+            font-size: 0.95rem;
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: -0.02em;
+        }
+
+        .title {
+            overflow: hidden;
+        }
+    }
+</style>
