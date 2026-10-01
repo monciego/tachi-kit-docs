@@ -1,0 +1,24 @@
+/* Styles for the standalone landing page (src/pages/index.astro).
+   The docs use Starlight's styles in global.css instead. */
+
+@import '@fontsource-variable/inter';
+@import 'tailwindcss';
+
+/* Follow Starlight's theme: it sets data-theme on <html>. */
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+@theme {
+    --font-sans:
+        'Inter Variable', ui-sans-serif, system-ui, sans-serif,
+        'Apple Color Emoji', 'Segoe UI Emoji';
+    --color-brand: #b91c1c;
+    --color-brand-bright: #ef4444;
+}
+
+html {
+    color-scheme: light;
+}
+
+html[data-theme='dark'] {
+    color-scheme: dark;
+}

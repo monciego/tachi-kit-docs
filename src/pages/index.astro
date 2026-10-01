@@ -1,0 +1,265 @@
+---
+import ArrowRight from '@lucide/astro/icons/arrow-right';
+import ArrowUpRight from '@lucide/astro/icons/arrow-up-right';
+import ClockArrowLeft from '@lucide/astro/icons/clock-arrow-left';
+import KeyRound from '@lucide/astro/icons/key-round';
+import LayoutDashboard from '@lucide/astro/icons/layout-dashboard';
+import ShieldCheck from '@lucide/astro/icons/shield-check';
+import Users from '@lucide/astro/icons/users';
+import Workflow from '@lucide/astro/icons/workflow';
+
+import logo from '../assets/logo.svg?raw';
+import '../styles/landing.css';
+
+const title = 'Tachi Kit: Cut through boilerplate';
+const description =
+    'An opinionated Laravel + React + Inertia starter kit with authentication, role-based permissions, user management and more.';
+
+const features = [
+    {
+        icon: KeyRound,
+        title: 'Authentication',
+        description:
+            'Login, registration, email verification, password reset, two-factor authentication and passkeys, powered by Fortify.',
+        href: '/docs/authentication/overview/',
+    },
+    {
+        icon: ShieldCheck,
+        title: 'Roles & permissions',
+        description:
+            'Permissions in one PHP enum, typed on the frontend, with policies that keep superadmins safe.',
+        href: '/docs/authorization/permissions/',
+    },
+    {
+        icon: Users,
+        title: 'User management',
+        description:
+            'Server-driven tables with search, filters, sorting, bulk actions, account status and avatars.',
+        href: '/docs/features/user-management/',
+    },
+    {
+        icon: LayoutDashboard,
+        title: 'Dashboard',
+        description:
+            'Stat cards, a sign-ups chart and a recent users table, loaded with deferred props.',
+        href: '/docs/features/dashboard/',
+    },
+    {
+        icon: ClockArrowLeft,
+        title: 'Activity log',
+        description:
+            'Who did what, and when: user changes, role changes and every sign-in, in plain sentences.',
+        href: '/docs/features/activity-log/',
+    },
+    {
+        icon: Workflow,
+        title: 'Typed end to end',
+        description:
+            'Wayfinder routes, generated permission types, PHPStan level 7 and a Pest suite in CI.',
+        href: '/docs/frontend/routing/',
+    },
+];
+
+const stack = ['Laravel 13', 'React 19', 'Inertia 3', 'Tailwind CSS 4', 'shadcn/ui', 'Pest'];
+
+const steps = [
+    { command: 'laravel new my-app --using=monciego/tachi-kit', note: 'Create the app' },
+    { command: 'npm install && php artisan storage:link', note: 'Install the frontend' },
+    { command: 'composer dev', note: 'Start building' },
+];
+---
+
+<!doctype html>
+<html lang="en" data-theme="dark">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <script is:inline>
+            // Match Starlight's theme preference (stored under "starlight-theme").
+            const stored = localStorage.getItem('starlight-theme');
+            const theme =
+                stored === 'light' || stored === 'dark'
+                    ? stored
+                    : matchMedia('(prefers-color-scheme: light)').matches
+                      ? 'light'
+                      : 'dark';
+            document.documentElement.dataset.theme = theme;
+        </script>
+    </head>
+    <body
+        class="min-h-screen bg-white font-sans text-zinc-900 antialiased dark:bg-[#16181c] dark:text-zinc-100"
+    >
+        <header
+            class="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-4 py-5 sm:px-6"
+        >
+            <a href="/" class="flex items-center gap-2.5 font-semibold tracking-tight">
+                <span class="size-8 [&>svg]:size-full" set:html={logo} />
+                Tachi Kit
+            </a>
+            <nav class="flex items-center gap-1 text-sm font-medium">
+                <a
+                    href="/docs/"
+                    class="rounded-md px-3 py-2 text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+                    >Docs</a
+                >
+                <a
+                    href="https://github.com/monciego/tachi-kit"
+                    class="flex items-center gap-1 rounded-md px-3 py-2 text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+                >
+                    GitHub <ArrowUpRight class="size-3.5" aria-hidden="true" />
+                </a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="relative overflow-hidden">
+                <div
+                    class="relative mx-auto flex max-w-6xl flex-col items-center gap-8 px-4 pt-16 pb-20 text-center sm:px-6 sm:pt-24 sm:pb-28"
+                >
+                    <p
+                        class="rounded-full border border-zinc-200 bg-white px-3 py-1 text-xs font-medium text-zinc-600 dark:border-zinc-800 dark:bg-[#16181c] dark:text-zinc-400"
+                    >
+                        Laravel + React + Inertia starter kit
+                    </p>
+                    <h1
+                        class="max-w-3xl text-5xl font-semibold tracking-tighter text-balance sm:text-7xl"
+                    >
+                        Cut through boilerplate.
+                    </h1>
+                    <p class="max-w-2xl text-lg text-balance text-zinc-600 dark:text-zinc-400">
+                        Tachi Kit is an opinionated Laravel + React + Inertia starter kit
+                        with authentication, role-based permissions, user management and
+                        more. Skip the boring stuff and focus on what makes your app
+                        unique.
+                    </p>
+                    <div class="flex flex-wrap items-center justify-center gap-3">
+                        <a
+                            href="/docs/"
+                            class="inline-flex h-11 items-center gap-2 rounded-lg bg-brand px-6 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-red-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+                        >
+                            Read the docs <ArrowRight class="size-4" aria-hidden="true" />
+                        </a>
+                        <a
+                            href="https://github.com/monciego/tachi-kit"
+                            class="inline-flex h-11 items-center gap-2 rounded-lg border border-zinc-300 px-6 text-sm font-semibold transition-colors hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-800"
+                        >
+                            View on GitHub
+                        </a>
+                    </div>
+                    <pre
+                        class="w-full max-w-lg overflow-x-auto rounded-lg border border-zinc-200 bg-zinc-50 px-4 py-3 text-left font-mono text-sm text-zinc-700 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300"><code><span class="select-none text-zinc-400">$ </span>laravel new my-app --using=monciego/tachi-kit</code></pre>
+                </div>
+            </section>
+
+            <section class="border-t border-zinc-200 dark:border-zinc-800">
+                <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+                    <div class="mb-10 flex max-w-2xl flex-col gap-2">
+                        <h2 class="text-3xl font-semibold tracking-tight">
+                            Everything you'd build first, already built.
+                        </h2>
+                        <p class="text-zinc-600 dark:text-zinc-400">
+                            Every feature is documented from your side of the code: what it
+                            does, where it lives, and how to customize it.
+                        </p>
+                    </div>
+                    <ul
+                        class="grid gap-px overflow-hidden rounded-xl border border-zinc-200 bg-zinc-200 sm:grid-cols-2 lg:grid-cols-3 dark:border-zinc-800 dark:bg-zinc-800"
+                    >
+                        {
+                            features.map(({ icon: Icon, title, description, href }) => (
+                                <li class="bg-white dark:bg-[#16181c]">
+                                    <a
+                                        href={href}
+                                        class="group flex h-full flex-col gap-3 p-6 transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-900"
+                                    >
+                                        <Icon
+                                            class="size-5 text-brand dark:text-brand-bright"
+                                            aria-hidden="true"
+                                        />
+                                        <h3 class="flex items-center gap-1 font-medium">
+                                            {title}
+                                            <ArrowRight
+                                                class="size-3.5 opacity-0 transition-opacity group-hover:opacity-100"
+                                                aria-hidden="true"
+                                            />
+                                        </h3>
+                                        <p class="text-sm text-zinc-600 dark:text-zinc-400">
+                                            {description}
+                                        </p>
+                                    </a>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                </div>
+            </section>
+
+            <section class="border-t border-zinc-200 dark:border-zinc-800">
+                <div class="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2">
+                    <div class="flex flex-col gap-3">
+                        <h2 class="text-3xl font-semibold tracking-tight">
+                            Up and running in three commands.
+                        </h2>
+                        <p class="text-zinc-600 dark:text-zinc-400">
+                            SQLite by default, roles and permissions seeded on install, and
+                            demo accounts one <code class="font-mono text-sm"
+                                >php artisan db:seed</code
+                            > away.
+                        </p>
+                        <a
+                            href="/docs/installation/"
+                            class="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-brand hover:underline dark:text-brand-bright"
+                        >
+                            Installation guide <ArrowRight class="size-4" aria-hidden="true" />
+                        </a>
+                    </div>
+                    <ol class="flex flex-col gap-3">
+                        {
+                            steps.map(({ command, note }, index) => (
+                                <li class="flex flex-col gap-1.5">
+                                    <span class="text-xs font-medium text-zinc-500">
+                                        {index + 1}. {note}
+                                    </span>
+                                    <code class="overflow-x-auto rounded-lg border border-zinc-200 bg-zinc-50 px-4 py-2.5 font-mono text-sm whitespace-nowrap dark:border-zinc-800 dark:bg-zinc-900">
+                                        {command}
+                                    </code>
+                                </li>
+                            ))
+                        }
+                    </ol>
+                </div>
+            </section>
+
+            <section class="border-t border-zinc-200 dark:border-zinc-800">
+                <div
+                    class="mx-auto flex max-w-6xl flex-col items-center gap-4 px-4 py-12 sm:px-6"
+                >
+                    <p class="text-sm text-zinc-600 dark:text-zinc-400">
+                        Built on the official Laravel React starter kit, with
+                    </p>
+                    <ul class="flex flex-wrap items-center justify-center gap-2">
+                        {
+                            stack.map((item) => (
+                                <li class="rounded-md border border-zinc-200 px-3 py-1 text-sm font-medium dark:border-zinc-800">
+                                    {item}
+                                </li>
+                            ))
+                        }
+                    </ul>
+                </div>
+            </section>
+        </main>
+
+        <footer class="border-t border-zinc-200 dark:border-zinc-800">
+            <div
+                class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-4 py-6 text-sm text-zinc-500 sm:flex-row sm:px-6"
+            >
+                <p>Tachi Kit. Cut through boilerplate.</p>
+                <p>Released under the MIT license.</p>
+            </div>
+        </footer>
+    </body>
+</html>
