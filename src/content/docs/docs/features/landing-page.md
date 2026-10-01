@@ -61,10 +61,16 @@ Set `APP_NAME` in `.env`. It's shared with every page as `name` and used in the 
 
 ### Logo
 
-The in-app logo is `resources/js/components/app-logo-icon.tsx`, an inline SVG that `app-logo.tsx` places next to the app name in the sidebar and header. It ships with the Laravel logo from the upstream starter kit. Replace the `<path>` with your own mark, keeping `{...props}` on the `<svg>` so size and color classes still apply.
+The logo is the **太刀** wordmark ("tachi", the Japanese long sword). It's text, not an image, rendered by `resources/js/components/app-logo-icon.tsx`. Every place that shows the logo uses this one component: the sidebar and header (through `app-logo.tsx`), the auth layouts, and the landing page.
 
-The landing page header uses Lucide's `Sword` icon. Swap it for `<AppLogoIcon />` to use the same logo everywhere.
+```tsx
+<AppLogoIcon className="text-3xl text-black dark:text-white" />
+```
+
+Size and color it with text utilities (`text-*`). The typeface comes from the `--font-logo` stack in `resources/css/app.css`: a serif Japanese font already installed on the visitor's system (Noto Serif JP/CJK, Hiragino Mincho, Yu Mincho), so nothing extra is downloaded.
+
+To use your own brand, replace what `AppLogoIcon` renders, either your product name as text or an inline `<svg>`. Keep the `className` passthrough so existing call sites still size it.
 
 ### Favicon
 
-Replace `public/favicon.ico`, `public/favicon.svg` and `public/apple-touch-icon.png`. They're referenced in `resources/views/app.blade.php`.
+Replace `public/favicon.svg`, `public/favicon.ico` and `public/apple-touch-icon.png`. They're referenced in `resources/views/app.blade.php`. The kit's `favicon.svg` draws 太刀 as SVG text over a dark rounded square, and the `.ico` and `.png` files are rasterized versions of the same mark.
