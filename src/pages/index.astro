@@ -9,6 +9,7 @@ import Users from '@lucide/astro/icons/users';
 import Workflow from '@lucide/astro/icons/workflow';
 
 import logo from '../assets/logo.svg?raw';
+import CopyButton from '../components/CopyButton.astro';
 import '../styles/landing.css';
 
 const title = 'Tachi Kit: Cut through boilerplate';
@@ -149,8 +150,13 @@ const steps = [
                             View on GitHub
                         </a>
                     </div>
-                    <pre
-                        class="w-full max-w-lg overflow-x-auto rounded-lg border border-zinc-200 bg-zinc-50 px-4 py-3 text-left font-mono text-sm text-zinc-700 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300"><code><span class="select-none text-zinc-400">$ </span>laravel new my-app --using=monciego/tachi-kit</code></pre>
+                    <div
+                        class="flex w-full max-w-lg items-center gap-2 rounded-lg border border-zinc-200 bg-zinc-50 py-1.5 pr-1.5 pl-4 dark:border-zinc-800 dark:bg-zinc-900"
+                    >
+                        <pre
+                            class="min-w-0 flex-1 overflow-x-auto text-left font-mono text-sm text-zinc-700 dark:text-zinc-300"><code><span class="select-none text-zinc-400">$ </span>{steps[0].command}</code></pre>
+                        <CopyButton text={steps[0].command} />
+                    </div>
                 </div>
             </section>
 
@@ -223,9 +229,12 @@ const steps = [
                                     <span class="text-xs font-medium text-zinc-500">
                                         {index + 1}. {note}
                                     </span>
-                                    <code class="overflow-x-auto rounded-lg border border-zinc-200 bg-zinc-50 px-4 py-2.5 font-mono text-sm whitespace-nowrap dark:border-zinc-800 dark:bg-zinc-900">
-                                        {command}
-                                    </code>
+                                    <div class="flex items-center gap-2 rounded-lg border border-zinc-200 bg-zinc-50 py-1 pr-1 pl-4 dark:border-zinc-800 dark:bg-zinc-900">
+                                        <code class="min-w-0 flex-1 overflow-x-auto font-mono text-sm whitespace-nowrap">
+                                            {command}
+                                        </code>
+                                        <CopyButton text={command} />
+                                    </div>
                                 </li>
                             ))
                         }

@@ -1,0 +1,45 @@
+---
+import Check from '@lucide/astro/icons/check';
+import Copy from '@lucide/astro/icons/copy';
+
+interface Props {
+    text: string;
+    class?: string;
+}
+
+const { text, class: className } = Astro.props;
+---
+
+<button
+    type="button"
+    data-copy={text}
+    aria-label="Copy command"
+    title="Copy command"
+    class:list={[
+        'group inline-flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-md text-zinc-500 transition-colors hover:bg-zinc-200 hover:text-zinc-900 focus-visible:outline-2 focus-visible:outline-brand dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-white',
+        className,
+    ]}
+>
+    <Copy class="size-4 group-data-copied:hidden" aria-hidden="true" />
+    <Check
+        class="hidden size-4 text-green-600 group-data-copied:block dark:text-green-500"
+        aria-hidden="true"
+    />
+</button>
+
+<script>
+    document.querySelectorAll<HTMLButtonElement>('button[data-copy]').forEach((button) => {
+        let timeout: ReturnType<typeof setTimeout>;
+
+        button.addEventListener('click', async () => {
+            await navigator.clipboard.writeText(button.dataset.copy ?? '');
+            button.dataset.copied = '';
+            button.setAttribute('aria-label', 'Copied');
+            clearTimeout(timeout);
+            timeout = setTimeout(() => {
+                delete button.dataset.copied;
+                button.setAttribute('aria-label', 'Copy command');
+            }, 2000);
+        });
+    });
+</script>
