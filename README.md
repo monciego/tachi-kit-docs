@@ -25,4 +25,4 @@ Write pages from the kit's current source: use real class, method and config nam
 
 - Docs theme colors: `src/styles/global.css` (`--sl-color-*` variables for dark and light).
 - Landing page: `src/styles/landing.css` (Tailwind 4). It follows the docs theme through Starlight's `starlight-theme` preference.
-- Logo: `src/assets/logo.svg` (also copied to `public/favicon.svg`).
+- Logo: the 太刀 wordmark is text, rendered by `src/components/SiteTitle.astro` (docs) and `src/pages/index.astro` (landing page) with a serif Japanese system font. Favicons: `public/favicon.svg` (text-based) and `public/apple-touch-icon.png`.
